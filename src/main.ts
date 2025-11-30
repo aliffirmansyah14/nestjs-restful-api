@@ -10,7 +10,7 @@ async function bootstrap() {
 
   app.useLogger(logger);
 
-  // agar saat di ctel + c jalankan app.close()
+  // agar saat di ctrl + c jalankan app.close()
   app.enableShutdownHooks();
 
   await app.listen(process.env.PORT ?? 3000);
