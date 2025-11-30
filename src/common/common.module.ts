@@ -1,8 +1,23 @@
-import { Module } from '@nestjs/common';
+import { Global, Module } from '@nestjs/common';
 import { PrismaService } from './prisma.service';
+import { WinstonModule } from 'nest-winston';
+import * as winston from 'winston';
+import { ConfigModule } from '@nestjs/config';
+import { ValidationService } from './validation.service';
 
+@Global()
 @Module({
-  providers: [PrismaService],
-  exports: [PrismaService],
+  imports: [
+    WinstonModule.forRoot({
+      format: winston.format.json(),
+      level: 'debug',
+      transports: [new winston.transports.Console()],
+    }),
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
+  ],
+  providers: [PrismaService, ValidationService],
+  exports: [PrismaService, ValidationService],
 })
 export class CommonModule {}
