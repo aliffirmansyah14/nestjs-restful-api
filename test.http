@@ -14,10 +14,20 @@ Content-Type: application/json
 
 {
   "username": "user",
-  "password": "user"
+  "password": "password"
 }
 
 
 ### get 
 GET http://localhost:3000/api/users/current
-Authorization:6d8f6151-446d-4016-aa0c-9e45d07dde42
+Authorization:e9f874e6-2412-4380-accb-ac1927b93628
+
+### update user 
+PATCH  http://localhost:3000/api/users/current
+Authorization:e9f874e6-2412-4380-accb-ac1927b93628
+Content-Type: application/json
+
+{
+	"name":"name updated",
+  "password": "user"
+}

@@ -1,8 +1,18 @@
-import { Body, Controller, Get, HttpCode, Post, Res } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  HttpCode,
+  Patch,
+  Post,
+  Put,
+  Res,
+} from '@nestjs/common';
 import { UserService } from './user.service';
 import {
   LoginUserRequest,
   RegisterUserRequest,
+  UpdateUserRequest,
   UserResponse,
 } from 'src/model/user.model';
 import { WebResponse } from 'src/model/web.model';
@@ -41,8 +51,19 @@ export class UserController {
   }
 
   @Get('/current')
+  @HttpCode(200)
   async getCurrent(@Auth() user: User) {
     const result = await this.userService.get(user);
+
+    return {
+      data: result,
+    };
+  }
+
+  @Patch('/current')
+  @HttpCode(200)
+  async update(@Auth() user: User, @Body() request: UpdateUserRequest) {
+    const result = await this.userService.update(user, request);
 
     return {
       data: result,

@@ -8,11 +8,10 @@ export class AuthMiddeware implements NestMiddleware {
     // jika login skip
     const url = req.url as string;
     if (url.includes('/login')) {
-      next();
-      return;
+      return next();
     }
     // check token
-    const token = req.headers['Authorization'] as string;
+    const token = req.headers['authorization'] as string;
 
     if (!token) throw new HttpException('Silahkkan login terlebih dahulu', 401);
     // validasi token
