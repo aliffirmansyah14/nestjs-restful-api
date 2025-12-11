@@ -1,0 +1,23 @@
+POST http://localhost:3000/api/users/register
+Content-Type: application/json
+
+{
+  "username": "user",
+  "password": "user",
+  "name": "user"
+}
+
+
+### login
+POST http://localhost:3000/api/users/login
+Content-Type: application/json
+
+{
+  "username": "user",
+  "password": "user"
+}
+
+
+### get 
+GET http://localhost:3000/api/users/current
+Authorization:6d8f6151-446d-4016-aa0c-9e45d07dde42
