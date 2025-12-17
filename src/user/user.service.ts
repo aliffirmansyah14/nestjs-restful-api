@@ -141,6 +141,19 @@ export class UserService {
     };
   }
 
+  async logout(user: User): Promise<boolean> {
+    await this.prismaService.user.update({
+      where: {
+        username: user.username,
+      },
+      data: {
+        token: null,
+      },
+    });
+
+    return true;
+  }
+
   async findAll() {
     return await this.prismaService.user.findMany();
   }

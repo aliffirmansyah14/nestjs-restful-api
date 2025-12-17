@@ -1,12 +1,11 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   HttpCode,
   Patch,
   Post,
-  Put,
-  Res,
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import {
@@ -18,11 +17,16 @@ import {
 import { WebResponse } from 'src/model/web.model';
 import { Auth } from 'src/common/auth.decorator';
 import { type User } from 'prisma/generated/client';
-import { type Response } from 'express';
 
 @Controller('api/users')
 export class UserController {
   constructor(private userService: UserService) {}
+
+  @Get()
+  @HttpCode(200)
+  async getUsers() {
+    return await this.userService.findAll();
+  }
 
   @Post('/register')
   @HttpCode(200)
@@ -59,7 +63,6 @@ export class UserController {
       data: result,
     };
   }
-
   @Patch('/current')
   @HttpCode(200)
   async update(@Auth() user: User, @Body() request: UpdateUserRequest) {
@@ -67,6 +70,16 @@ export class UserController {
 
     return {
       data: result,
+    };
+  }
+
+  @Delete('/current')
+  @HttpCode(200)
+  async logout(@Auth() user: User): Promise<WebResponse<boolean>> {
+    await this.userService.logout(user);
+
+    return {
+      data: true,
     };
   }
 }

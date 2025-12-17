@@ -3,11 +3,13 @@ import { PrismaService } from './prisma.service';
 
 @Injectable()
 export class AuthMiddeware implements NestMiddleware {
+  private publicRoutes = ['/login', '/users'];
   constructor(private prismaService: PrismaService) {}
   async use(req: any, res: any, next: (error?: any) => void) {
     // jika login skip
-    const url = req.url as string;
-    if (url.includes('/login')) {
+    const url = (req.url as string).split('/');
+
+    if (this.publicRoutes.includes(`/${url[url.length - 1]}`)) {
       return next();
     }
     // check token
