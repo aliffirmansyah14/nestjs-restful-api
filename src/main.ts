@@ -7,7 +7,6 @@ async function bootstrap() {
 
   //   setup logger menggunakan winston
   const logger = app.get(WINSTON_MODULE_NEST_PROVIDER);
-
   app.useLogger(logger);
 
   // agar saat di ctrl + c jalankan app.close()

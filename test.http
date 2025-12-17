@@ -1,0 +1,41 @@
+POST http://localhost:3000/api/users/register
+Content-Type: application/json
+
+{
+  "username": "user",
+  "password": "user",
+  "name": "user"
+}
+
+
+### login
+POST http://localhost:3000/api/users/login
+Content-Type: application/json
+
+{
+  "username": "user",
+  "password": "user"
+}
+
+
+### get users
+GET http://localhost:3000/api/users
+
+### get 
+GET http://localhost:3000/api/users/current
+Authorization:e7cc788b-a34e-4489-8700-2dbcce3308fb
+
+### update user 
+PATCH  http://localhost:3000/api/users/current
+Authorization:e7cc788b-a34e-4489-8700-2dbcce3308fb
+Content-Type: application/json
+
+{
+"name":"testing update",
+  "password": "user"
+}
+
+###logout
+DELETE   http://localhost:3000/api/users/current
+Authorization:e7cc788b-a34e-4489-8700-2dbcce3308fb
+

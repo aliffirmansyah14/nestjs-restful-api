@@ -7,7 +7,7 @@ import {
 } from '@nestjs/common';
 import { PrismaPg } from '@prisma/adapter-pg';
 import { WINSTON_MODULE_PROVIDER } from 'nest-winston';
-import { PrismaClient } from 'prisma/generated/prisma/client';
+import { PrismaClient } from '../../prisma/generated/client';
 
 @Injectable()
 export class PrismaService
