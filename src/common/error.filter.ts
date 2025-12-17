@@ -18,7 +18,8 @@ export class ErrorFiler implements ExceptionFilter {
       });
     } else if (exception instanceof ZodError) {
       response.status(400).json({
-        errors: 'Validation request error',
+        messages: 'Validation request error',
+        erros: exception.flatten().fieldErrors,
       });
     } else {
       response.status(500).json({

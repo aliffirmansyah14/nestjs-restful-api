@@ -23,11 +23,11 @@ GET http://localhost:3000/api/users
 
 ### get 
 GET http://localhost:3000/api/users/current
-Authorization:e7cc788b-a34e-4489-8700-2dbcce3308fb
+Authorization:3334f239-ac8f-4d26-be04-a99887435f79
 
 ### update user 
 PATCH  http://localhost:3000/api/users/current
-Authorization:e7cc788b-a34e-4489-8700-2dbcce3308fb
+Authorization:3334f239-ac8f-4d26-be04-a99887435f79
 Content-Type: application/json
 
 {
@@ -37,5 +37,5 @@ Content-Type: application/json
 
 ###logout
 DELETE   http://localhost:3000/api/users/current
-Authorization:e7cc788b-a34e-4489-8700-2dbcce3308fb
+Authorization:3334f239-ac8f-4d26-be04-a99887435f79
 
