@@ -8,8 +8,29 @@ Authorization:3334f239-ac8f-4d26-be04-a99887435f79
 Content-Type:application/json
 
 {
-  "first_name": "ai",
+  "first_name": "ai2",
   "last_name": "rahasia",
   "email": "alif@mail.com",
   "phone": "021234567890"
 }
+
+
+### get contact by id
+GET   http://localhost:3000/api/contacts/1
+Authorization:3334f239-ac8f-4d26-be04-a99887435f79
+
+### cerat contacts
+PUT   http://localhost:3000/api/contacts/1
+Authorization:3334f239-ac8f-4d26-be04-a99887435f79
+Content-Type:application/json
+
+{
+  "first_name": "alif",
+  "last_name": "rahasia1",
+  "email": "alif@mail.com",
+  "phone": "021234567890"
+}
+
+### delete contact
+DELETE    http://localhost:3000/api/contacts/2
+Authorization:3334f239-ac8f-4d26-be04-a99887435f79
