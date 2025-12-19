@@ -14,7 +14,7 @@ Request Body :
 {
   "first_name": "ai",
   "last_name": "rahasia",
-  "email": "alif firmansyah",
+  "email": "alif@gmail.com",
   "phone": "021234567890"
 }
 ```
