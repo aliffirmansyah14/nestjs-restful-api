@@ -1,0 +1,15 @@
+GET  http://localhost:3000/api/contacts/address/hello
+Content-Type: application/json
+
+###
+POST http://localhost:3000/api/contacts/1/address
+Authorization:3334f239-ac8f-4d26-be04-a99887435f79
+Content-Type: application/json
+
+{
+  "street": "jalan awdwad",
+  "city": "jakarta",
+  "province": "DKI Jakarta",
+  "country": "Negara apa",
+  "postal_code": "12312312"
+}

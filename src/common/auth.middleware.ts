@@ -3,7 +3,7 @@ import { PrismaService } from './prisma.service';
 
 @Injectable()
 export class AuthMiddeware implements NestMiddleware {
-  private publicRoutes = ['/login', '/users'];
+  private publicRoutes = ['/login', '/users', '/hello'];
   constructor(private prismaService: PrismaService) {}
   async use(req: any, res: any, next: (error?: any) => void) {
     // jika login skip

@@ -11,9 +11,10 @@ import { UserModule } from './user/user.module';
 import { LogMiddleware } from './log/log.middleware';
 import { AuthMiddeware } from './common/auth.middleware';
 import { ContactModule } from './contact/contact.module';
+import { AddressModule } from './address/address.module';
 
 @Module({
-  imports: [CommonModule, UserModule, ContactModule],
+  imports: [CommonModule, UserModule, ContactModule, AddressModule],
   controllers: [AppController],
   providers: [AppService],
 })
