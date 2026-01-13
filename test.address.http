@@ -19,3 +19,14 @@ GET  http://localhost:3000/api/contacts/1/addresses/1
 Content-Type: application/json
 Authorization:3334f239-ac8f-4d26-be04-a99887435f79
 
+###
+PUT   http://localhost:3000/api/contacts/1/addresses/1
+Content-Type: application/json
+Authorization:3334f239-ac8f-4d26-be04-a99887435f79
+
+{
+  "street": "jalan update",
+  "country": "Negara apa",
+  "postal_code": "12312312"
+}
+

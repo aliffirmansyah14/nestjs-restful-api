@@ -1,4 +1,12 @@
-import { Body, Controller, Get, HttpCode, Param, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  HttpCode,
+  Param,
+  Post,
+  Put,
+} from '@nestjs/common';
 import { AddressService } from './address.service';
 import { AddressRequest, AddressResponse } from 'src/model/address.model';
 import { WebResponse } from 'src/model/web.model';
@@ -39,6 +47,23 @@ export class AddressController {
     const result = await this.addressService.getAddressById(
       contactId,
       addressId,
+    );
+    return {
+      data: result,
+    };
+  }
+
+  @Put(':contactId/addresses/:addressId')
+  @HttpCode(200)
+  async update(
+    @Param('contactId') contactId: string,
+    @Param('addressId') addressId: string,
+    @Body() request: AddressRequest,
+  ): Promise<WebResponse<AddressResponse | null>> {
+    const result = await this.addressService.updateAddress(
+      contactId,
+      addressId,
+      request,
     );
     return {
       data: result,

@@ -91,4 +91,43 @@ export class AddressService {
         }
       : null;
   }
+
+  async updateAddress(
+    contactId: string,
+    addressId: string,
+    request: AddressRequest,
+  ): Promise<AddressResponse> {
+    this.logger.debug(
+      `Getcontacts address contactId:${contactId}  addressId:${addressId}}`,
+    );
+    const contact_id = this.validtionService.validate(
+      AddressValidation.CONTACTID,
+      Number(contactId),
+    ) as number;
+
+    const address_id = this.validtionService.validate(
+      AddressValidation.ADDRESSID,
+      Number(addressId),
+    ) as number;
+
+    const updateRequest = this.validtionService.validate(
+      AddressValidation.REQUEST,
+      {
+        ...request,
+        contact_id,
+      },
+    ) as AddressRequest;
+
+    const result = await this.prismaService.address.update({
+      where: {
+        id: address_id,
+        AND: {
+          contact_id,
+        },
+      },
+      data: updateRequest,
+    });
+
+    return result;
+  }
 }
