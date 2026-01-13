@@ -3,7 +3,7 @@ import { PrismaService } from './prisma.service';
 
 @Injectable()
 export class AuthMiddeware implements NestMiddleware {
-  private publicRoutes = ['/login', '/users', '/hello'];
+  private publicRoutes = ['/register', '/login'];
   constructor(private prismaService: PrismaService) {}
   async use(req: any, res: any, next: (error?: any) => void) {
     // jika login skip
@@ -24,6 +24,8 @@ export class AuthMiddeware implements NestMiddleware {
     });
 
     if (!user) throw new HttpException('Token tidak valid', 401);
+
+    if (user.username !== 'admin') throw new HttpException('Unauthorize', 403);
 
     req.user = user;
 
