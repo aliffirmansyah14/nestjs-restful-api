@@ -5,6 +5,7 @@ import {
   HttpException,
 } from '@nestjs/common';
 import { Response } from 'express';
+import { error } from 'node:console';
 import { ZodError } from 'zod';
 
 @Catch(ZodError, HttpException)
@@ -17,9 +18,13 @@ export class ErrorFiler implements ExceptionFilter {
         errors: exception.getResponse(),
       });
     } else if (exception instanceof ZodError) {
+      const isFormErrors = exception.flatten().formErrors.length > 0;
+      const errors = isFormErrors
+        ? exception.flatten().formErrors
+        : exception.flatten().fieldErrors;
       response.status(400).json({
         messages: 'Validation request error',
-        erros: exception.flatten().fieldErrors,
+        errors,
       });
     } else {
       response.status(500).json({

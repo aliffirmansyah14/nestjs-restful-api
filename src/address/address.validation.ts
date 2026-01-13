@@ -1,9 +1,9 @@
 import { z, ZodType } from 'zod';
 
 export class AddressValidation {
-  static CONTACTID: ZodType = z.number();
+  static CONTACTID: ZodType = z.number('Params must be a number');
 
-  static ADDRESSID: ZodType = z.number();
+  static ADDRESSID: ZodType = z.number('Params must be a numbe');
 
   static REQUEST: ZodType = z.object({
     street: z.string().min(1).max(100).optional(),

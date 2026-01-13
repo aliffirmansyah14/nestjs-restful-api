@@ -17,10 +17,17 @@ export class AddressService {
     private validtionService: ValidationService,
   ) {}
 
-  async hello() {
+  async getAddresses(contactId: String) {
+    this.logger.debug(`Get list address contactId:${contactId}`);
+
+    const contact_id = this.validtionService.validate(
+      AddressValidation.CONTACTID,
+      Number(contactId),
+    ) as number;
+
     return await this.prismaService.address.findMany({
       where: {
-        contact_id: 1,
+        contact_id,
       },
     });
   }
@@ -129,5 +136,42 @@ export class AddressService {
     });
 
     return result;
+  }
+
+  async deleteAddress(contactId: string, addressId: string): Promise<boolean> {
+    this.logger.debug(
+      `Delete address contactId:${contactId}  addressId:${addressId}}`,
+    );
+    const contact_id = this.validtionService.validate(
+      AddressValidation.CONTACTID,
+      Number(contactId),
+    ) as number;
+
+    const address_id = this.validtionService.validate(
+      AddressValidation.ADDRESSID,
+      Number(addressId),
+    ) as number;
+
+    const isAddressExist = await this.prismaService.address.findFirst({
+      where: {
+        id: address_id,
+        AND: {
+          contact_id,
+        },
+      },
+    });
+
+    if (!isAddressExist) return false;
+
+    await this.prismaService.address.delete({
+      where: {
+        id: address_id,
+        AND: {
+          contact_id,
+        },
+      },
+    });
+
+    return true;
   }
 }
