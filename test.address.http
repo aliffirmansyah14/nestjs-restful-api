@@ -1,0 +1,38 @@
+GET  http://localhost:3000/api/contacts/1/address
+Content-Type: application/json
+Authorization:3334f239-ac8f-4d26-be04-a99887435f79
+
+###
+POST http://localhost:3000/api/contacts/1/addresses
+Authorization:3334f239-ac8f-4d26-be04-a99887435f79
+Content-Type: application/json
+
+{
+  "street": "jln agung raya lenteng agung",
+  "city": "jakarta",
+  "province": "DKI Jakarta",
+  "country": "Indonesia",
+  "postal_code": "123456"
+}
+
+###
+GET  http://localhost:3000/api/contacts/1/addresses/2
+Content-Type: application/json
+Authorization:3334f239-ac8f-4d26-be04-a99887435f79
+
+###
+PUT   http://localhost:3000/api/contacts/awdadw/addresses/awdawd
+Content-Type: application/json
+Authorization:3334f239-ac8f-4d26-be04-a99887435f79
+
+{
+  "street": "jalan update",
+  "country": "Negara apa",
+  "postal_code": "12312312"
+}
+
+
+###
+DELETE   http://localhost:3000/api/contacts/1/addresses/3
+Content-Type: application/json
+Authorization:3334f239-ac8f-4d26-be04-a99887435f79

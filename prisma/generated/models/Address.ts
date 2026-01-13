@@ -200,8 +200,8 @@ export type AddressGroupByOutputType = {
   street: string | null
   city: string | null
   province: string | null
-  country: string | null
-  postal_code: string | null
+  country: string
+  postal_code: string
   contact_id: number
   _count: AddressCountAggregateOutputType | null
   _avg: AddressAvgAggregateOutputType | null
@@ -233,8 +233,8 @@ export type AddressWhereInput = {
   street?: Prisma.StringNullableFilter<"Address"> | string | null
   city?: Prisma.StringNullableFilter<"Address"> | string | null
   province?: Prisma.StringNullableFilter<"Address"> | string | null
-  country?: Prisma.StringNullableFilter<"Address"> | string | null
-  postal_code?: Prisma.StringNullableFilter<"Address"> | string | null
+  country?: Prisma.StringFilter<"Address"> | string
+  postal_code?: Prisma.StringFilter<"Address"> | string
   contact_id?: Prisma.IntFilter<"Address"> | number
   contact?: Prisma.XOR<Prisma.ContactScalarRelationFilter, Prisma.ContactWhereInput>
 }
@@ -244,8 +244,8 @@ export type AddressOrderByWithRelationInput = {
   street?: Prisma.SortOrderInput | Prisma.SortOrder
   city?: Prisma.SortOrderInput | Prisma.SortOrder
   province?: Prisma.SortOrderInput | Prisma.SortOrder
-  country?: Prisma.SortOrderInput | Prisma.SortOrder
-  postal_code?: Prisma.SortOrderInput | Prisma.SortOrder
+  country?: Prisma.SortOrder
+  postal_code?: Prisma.SortOrder
   contact_id?: Prisma.SortOrder
   contact?: Prisma.ContactOrderByWithRelationInput
 }
@@ -258,8 +258,8 @@ export type AddressWhereUniqueInput = Prisma.AtLeast<{
   street?: Prisma.StringNullableFilter<"Address"> | string | null
   city?: Prisma.StringNullableFilter<"Address"> | string | null
   province?: Prisma.StringNullableFilter<"Address"> | string | null
-  country?: Prisma.StringNullableFilter<"Address"> | string | null
-  postal_code?: Prisma.StringNullableFilter<"Address"> | string | null
+  country?: Prisma.StringFilter<"Address"> | string
+  postal_code?: Prisma.StringFilter<"Address"> | string
   contact_id?: Prisma.IntFilter<"Address"> | number
   contact?: Prisma.XOR<Prisma.ContactScalarRelationFilter, Prisma.ContactWhereInput>
 }, "id">
@@ -269,8 +269,8 @@ export type AddressOrderByWithAggregationInput = {
   street?: Prisma.SortOrderInput | Prisma.SortOrder
   city?: Prisma.SortOrderInput | Prisma.SortOrder
   province?: Prisma.SortOrderInput | Prisma.SortOrder
-  country?: Prisma.SortOrderInput | Prisma.SortOrder
-  postal_code?: Prisma.SortOrderInput | Prisma.SortOrder
+  country?: Prisma.SortOrder
+  postal_code?: Prisma.SortOrder
   contact_id?: Prisma.SortOrder
   _count?: Prisma.AddressCountOrderByAggregateInput
   _avg?: Prisma.AddressAvgOrderByAggregateInput
@@ -287,8 +287,8 @@ export type AddressScalarWhereWithAggregatesInput = {
   street?: Prisma.StringNullableWithAggregatesFilter<"Address"> | string | null
   city?: Prisma.StringNullableWithAggregatesFilter<"Address"> | string | null
   province?: Prisma.StringNullableWithAggregatesFilter<"Address"> | string | null
-  country?: Prisma.StringNullableWithAggregatesFilter<"Address"> | string | null
-  postal_code?: Prisma.StringNullableWithAggregatesFilter<"Address"> | string | null
+  country?: Prisma.StringWithAggregatesFilter<"Address"> | string
+  postal_code?: Prisma.StringWithAggregatesFilter<"Address"> | string
   contact_id?: Prisma.IntWithAggregatesFilter<"Address"> | number
 }
 
@@ -296,8 +296,8 @@ export type AddressCreateInput = {
   street?: string | null
   city?: string | null
   province?: string | null
-  country?: string | null
-  postal_code?: string | null
+  country: string
+  postal_code: string
   contact: Prisma.ContactCreateNestedOneWithoutAddressesInput
 }
 
@@ -306,8 +306,8 @@ export type AddressUncheckedCreateInput = {
   street?: string | null
   city?: string | null
   province?: string | null
-  country?: string | null
-  postal_code?: string | null
+  country: string
+  postal_code: string
   contact_id: number
 }
 
@@ -315,8 +315,8 @@ export type AddressUpdateInput = {
   street?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  postal_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  postal_code?: Prisma.StringFieldUpdateOperationsInput | string
   contact?: Prisma.ContactUpdateOneRequiredWithoutAddressesNestedInput
 }
 
@@ -325,8 +325,8 @@ export type AddressUncheckedUpdateInput = {
   street?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  postal_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  postal_code?: Prisma.StringFieldUpdateOperationsInput | string
   contact_id?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
@@ -335,8 +335,8 @@ export type AddressCreateManyInput = {
   street?: string | null
   city?: string | null
   province?: string | null
-  country?: string | null
-  postal_code?: string | null
+  country: string
+  postal_code: string
   contact_id: number
 }
 
@@ -344,8 +344,8 @@ export type AddressUpdateManyMutationInput = {
   street?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  postal_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  postal_code?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type AddressUncheckedUpdateManyInput = {
@@ -353,8 +353,8 @@ export type AddressUncheckedUpdateManyInput = {
   street?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  postal_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  postal_code?: Prisma.StringFieldUpdateOperationsInput | string
   contact_id?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
@@ -454,8 +454,8 @@ export type AddressCreateWithoutContactInput = {
   street?: string | null
   city?: string | null
   province?: string | null
-  country?: string | null
-  postal_code?: string | null
+  country: string
+  postal_code: string
 }
 
 export type AddressUncheckedCreateWithoutContactInput = {
@@ -463,8 +463,8 @@ export type AddressUncheckedCreateWithoutContactInput = {
   street?: string | null
   city?: string | null
   province?: string | null
-  country?: string | null
-  postal_code?: string | null
+  country: string
+  postal_code: string
 }
 
 export type AddressCreateOrConnectWithoutContactInput = {
@@ -501,8 +501,8 @@ export type AddressScalarWhereInput = {
   street?: Prisma.StringNullableFilter<"Address"> | string | null
   city?: Prisma.StringNullableFilter<"Address"> | string | null
   province?: Prisma.StringNullableFilter<"Address"> | string | null
-  country?: Prisma.StringNullableFilter<"Address"> | string | null
-  postal_code?: Prisma.StringNullableFilter<"Address"> | string | null
+  country?: Prisma.StringFilter<"Address"> | string
+  postal_code?: Prisma.StringFilter<"Address"> | string
   contact_id?: Prisma.IntFilter<"Address"> | number
 }
 
@@ -511,16 +511,16 @@ export type AddressCreateManyContactInput = {
   street?: string | null
   city?: string | null
   province?: string | null
-  country?: string | null
-  postal_code?: string | null
+  country: string
+  postal_code: string
 }
 
 export type AddressUpdateWithoutContactInput = {
   street?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  postal_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  postal_code?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type AddressUncheckedUpdateWithoutContactInput = {
@@ -528,8 +528,8 @@ export type AddressUncheckedUpdateWithoutContactInput = {
   street?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  postal_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  postal_code?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type AddressUncheckedUpdateManyWithoutContactInput = {
@@ -537,8 +537,8 @@ export type AddressUncheckedUpdateManyWithoutContactInput = {
   street?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  postal_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  postal_code?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 
@@ -607,8 +607,8 @@ export type $AddressPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     street: string | null
     city: string | null
     province: string | null
-    country: string | null
-    postal_code: string | null
+    country: string
+    postal_code: string
     contact_id: number
   }, ExtArgs["result"]["address"]>
   composites: {}
