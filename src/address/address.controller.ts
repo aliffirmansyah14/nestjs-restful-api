@@ -17,7 +17,7 @@ export class AddressController {
     };
   }
 
-  @Post(':contactId/address')
+  @Post(':contactId/addresses')
   @HttpCode(200)
   async create(
     @Param('contactId') contactId: string,
@@ -25,6 +25,18 @@ export class AddressController {
   ): Promise<WebResponse<AddressResponse>> {
     const result = await this.addressService.create(Number(contactId), request);
 
+    return {
+      data: result,
+    };
+  }
+
+  @Get(':contactId/addresses/:addressId')
+  @HttpCode(200)
+  async getContacs(
+    @Param('contactId') contactId: string,
+    @Param('addressId') addressId: string,
+  ): Promise<WebResponse<AddressResponse | null>> {
+    const result = await this.addressService.getContacts(contactId, addressId);
     return {
       data: result,
     };

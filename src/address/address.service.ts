@@ -53,4 +53,42 @@ export class AddressService {
       postal_code: result.postal_code,
     };
   }
+
+  async getContacts(
+    contactId: string,
+    addressId: string,
+  ): Promise<AddressResponse | null> {
+    this.logger.debug(
+      `Getcontacts address contactId:${contactId}  addressId:${addressId}}`,
+    );
+    const contact_id = this.validtionService.validate(
+      AddressValidation.CONTACTID,
+      Number(contactId),
+    ) as number;
+
+    const address_id = this.validtionService.validate(
+      AddressValidation.ADDRESSID,
+      Number(addressId),
+    ) as number;
+
+    const result = await this.prismaService.address.findFirst({
+      where: {
+        contact_id: contact_id,
+        AND: {
+          id: address_id,
+        },
+      },
+    });
+
+    return result
+      ? {
+          id: result.id,
+          street: result.street,
+          city: result.city,
+          country: result.country,
+          province: result.province,
+          postal_code: result.postal_code,
+        }
+      : null;
+  }
 }
