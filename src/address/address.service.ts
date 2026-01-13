@@ -54,7 +54,7 @@ export class AddressService {
     };
   }
 
-  async getContacts(
+  async getAddressById(
     contactId: string,
     addressId: string,
   ): Promise<AddressResponse | null> {

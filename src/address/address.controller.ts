@@ -32,11 +32,14 @@ export class AddressController {
 
   @Get(':contactId/addresses/:addressId')
   @HttpCode(200)
-  async getContacs(
+  async getAddressById(
     @Param('contactId') contactId: string,
     @Param('addressId') addressId: string,
   ): Promise<WebResponse<AddressResponse | null>> {
-    const result = await this.addressService.getContacts(contactId, addressId);
+    const result = await this.addressService.getAddressById(
+      contactId,
+      addressId,
+    );
     return {
       data: result,
     };
