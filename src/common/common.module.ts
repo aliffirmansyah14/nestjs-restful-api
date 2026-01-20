@@ -5,8 +5,9 @@ import * as winston from 'winston';
 import { ConfigModule } from '@nestjs/config';
 import { ValidationService } from './validation.service';
 import { DtoService } from './dto.service';
-import { APP_FILTER } from '@nestjs/core';
+import { APP_FILTER, APP_GUARD } from '@nestjs/core';
 import { ErrorFiler } from './error.filter';
+import { RolesGuard } from './roles.guard';
 
 @Global()
 @Module({
@@ -26,6 +27,10 @@ import { ErrorFiler } from './error.filter';
     {
       provide: APP_FILTER,
       useClass: ErrorFiler,
+    },
+    {
+      provide: APP_GUARD,
+      useClass: RolesGuard,
     },
   ],
   exports: [PrismaService, ValidationService],

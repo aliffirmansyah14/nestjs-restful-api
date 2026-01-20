@@ -17,12 +17,14 @@ import {
 import { WebResponse } from 'src/model/web.model';
 import { Auth } from 'src/common/auth.decorator';
 import { type User } from 'prisma/generated/client';
+import { Roles } from 'src/common/roles.decorator';
 
 @Controller('api/users')
 export class UserController {
   constructor(private userService: UserService) {}
 
   @Get()
+  @Roles(['admin'])
   @HttpCode(200)
   async getUsers() {
     return await this.userService.findAll();

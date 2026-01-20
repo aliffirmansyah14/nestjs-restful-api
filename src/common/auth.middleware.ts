@@ -25,9 +25,11 @@ export class AuthMiddeware implements NestMiddleware {
 
     if (!user) throw new HttpException('Token tidak valid', 401);
 
-    if (user.username !== 'admin') throw new HttpException('Unauthorize', 403);
-
-    req.user = user;
+    if (user.username === 'admin') {
+      req.user = { ...user, roles: 'admin' };
+    } else {
+      req.user = user;
+    }
 
     next();
   }

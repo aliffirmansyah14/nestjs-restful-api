@@ -20,10 +20,13 @@ Content-Type: application/json
 
 ### get users
 GET http://localhost:3000/api/users
-Authorization:7cb948e4-bcc7-4c5c-91ac-50baf8ac1f35
-##
+##Authorization:7cb948e4-bcc7-4c5c-91ac-50baf8ac1f35
+Authorization:3334f239-ac8f-4d26-be04-a99887435f79
+
+
 ### get 
-GET http://localhost:3000/api/users/currentAuthorization:3334f239-ac8f-4d26-be04-a99887435f79
+GET http://localhost:3000/api/users/current
+Authorization:3334f239-ac8f-4d26-be04-a99887435f79
 
 ### update user 
 PATCH  http://localhost:3000/api/users/current
